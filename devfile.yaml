@@ -1,0 +1,20 @@
+schemaVersion: 2.1.0
+metadata:
+  name: go
+components:
+  - name: app
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8:3.4
+      memoryLimit: 2Gi
+      memoryRequest: 2Gi
+      cpuLimit: 1000m
+      cpuRequest: 1000m
+      mountSources: false
+      env:
+        - name: GOCACHE
+          value: /tmp/.cache
+      endpoints:
+        - exposure: public
+          name: 'app-endpoint'
+          protocol: http
+          targetPort: 8080
